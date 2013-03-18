@@ -8,7 +8,7 @@ describe Gist do
               :files => {'test_file' => {:content => 'puts "hello world!"'}} 
             }
 
-      stub = stub_request(:post, "https://mfpiccolo:sac93%21ron@api.github.com/gists").
+      stub = stub_request(:post, "https://GITHUB_USERNAME:GITHUB_PASSWORD@api.github.com/gists").
          with(:body => {"{\"public\":\"true\",\"description\":\"a test gist\",\"files\":{\"test_file\":{\"content\":\"puts \\\"hello world!\\\"\"}}}"=>true},
               :headers => {'Accept'=>'*/*', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Faraday v0.8.6'}).
          to_return(:status => 200, :body => "", :headers => {})
