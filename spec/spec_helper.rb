@@ -7,4 +7,4 @@ require 'webmock/rspec'
 
 
 GITHUB_USERNAME = 'mfpiccolo'
-GITHUB_PASSWORD = 'sac93!ron'
+GITHUB_PASSWORD = '********'
