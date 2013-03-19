@@ -1,3 +1,8 @@
+require './lib/gist'
+require 'faraday'
+require 'json'
+require 'base64'
+
 def welcome
   puts "Welcome to the Github command-line client."
   menu
@@ -5,11 +10,14 @@ end
 
 def menu
   choice = nil
+    puts "Please enter your Github username:"
+    $github_username = gets.chomp
+    puts "Please enter your Github password:"
+    $github_password = gets.chomp
   until choice == 'e'
     puts "What would you like to do?"
     puts "Press 'l' to list your Gists, 'c' to create a new Gist, 'v' to view a Gist, 'u' to update a Gist, or 'd' to delete a Gist."
     puts "Press 'e' to exit."
-
     case choice = gets.chomp
     when 'l'
       list
@@ -51,7 +59,39 @@ def create
   content = gets.chomp
   files = {filename => {:content => content}}
 
-  Gist.create(:public => public_attribute, :description => description, :files => files)
+  response = Gist.create(:public => public_attribute, :description => description, :files => files)
+  if response.headers['status'] == "201 Created"
+    puts "Your gist was created"
+  else
+    puts "There was an error createing your gist"
+  end
+end
+
+def list
+  response = Gist.list
+  gists = JSON.parse(response.body)
+  gist.each do |gist_response| 
+    new_gist = Gist.new(gist_response)
+    p new_gist.file_names
+    p new_gist.description
+  end
 end
 
 welcome
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

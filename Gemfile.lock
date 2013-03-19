@@ -1,10 +1,18 @@
 GEM
+  remote: https://rubygems.org/
   specs:
+    activesupport (3.2.12)
+      i18n (~> 0.6)
+      multi_json (~> 1.0)
     addressable (2.3.3)
     crack (0.3.2)
     diff-lcs (1.2.1)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
     faraday (0.8.6)
       multipart-post (~> 1.1)
+    i18n (0.6.4)
+    multi_json (1.6.1)
     multipart-post (1.2.0)
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
@@ -22,6 +30,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  factory_girl
   faraday
   rspec
   webmock

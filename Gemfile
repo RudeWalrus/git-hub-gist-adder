@@ -1,4 +1,6 @@
+source 'https://rubygems.org'
+
 gem 'faraday'
 gem 'rspec'
 gem 'webmock'
-gem 'active_record'
+gem 'factory_girl'
